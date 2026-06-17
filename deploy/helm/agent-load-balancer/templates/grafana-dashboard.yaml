@@ -1,0 +1,15 @@
+﻿{{- if and .Values.metrics.enabled .Values.metrics.grafanaDashboard.enabled }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ printf "%s-dashboard" (include "agent-load-balancer.fullname" . | trunc 53 | trimSuffix "-") }}
+  namespace: {{ .Release.Namespace | quote }}
+  labels:
+    {{- include "agent-load-balancer.labels" . | nindent 4 }}
+    grafana_dashboard: "1"
+  annotations:
+    grafana_folder: {{ .Values.metrics.grafanaDashboard.folder | quote }}
+data:
+  agent-load-balancer.json: |-
+    {{ .Files.Get "dashboards/agent-load-balancer.json" | nindent 4 }}
+{{- end }}

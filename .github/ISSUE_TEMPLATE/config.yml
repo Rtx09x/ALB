@@ -1,0 +1,21 @@
+﻿# Disable freeform "blank issue" â€” force structured Issue Forms below.
+blank_issues_enabled: false
+
+contact_links:
+  - name: ðŸ’¬ Questions, Usage Help, Show & Tell
+    url: https://github.com/rtx09x/agent-load-balancer/discussions
+    about: |
+      Not sure if it's a bug? Want to ask "how do Iâ€¦?", share a setup,
+      or propose an idea before filing a feature request? Use Discussions.
+
+  - name: ðŸ”’ Security Vulnerability (private)
+    url: https://github.com/rtx09x/agent-load-balancer/security/advisories/new
+    about: |
+      Please report security issues privately via GitHub Security
+      Advisories â€” do NOT open a public issue. See SECURITY.md.
+
+  - name: ðŸ“š Documentation & FAQ
+    url: https://github.com/rtx09x/agent-load-balancer#readme
+    about: |
+      Common setup, deployment, account quota and dashboard topics are
+      documented in the README â€” check there first.

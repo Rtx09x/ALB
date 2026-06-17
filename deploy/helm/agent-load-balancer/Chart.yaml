@@ -1,0 +1,27 @@
+﻿apiVersion: v2
+name: agent-load-balancer
+description: >-
+  Production-grade Helm chart for Agent Load Balancer with Codex, Gemini,
+  Antigravity, usage tracking, account pooling, and observability
+type: application
+version: 1.20.0-beta.3
+appVersion: 1.20.0-beta.3
+kubeVersion: '>=1.32.0-0'
+home: https://github.com/rtx09x/agent-load-balancer
+sources:
+  - https://github.com/rtx09x/agent-load-balancer
+keywords:
+  - agent
+  - antigravity
+  - gemini
+  - load-balancer
+  - openai
+  - proxy
+  - codex
+maintainers:
+  - name: Rtx09x
+dependencies:
+  - name: postgresql
+    version: 18.6.7
+    repository: oci://registry-1.docker.io/bitnamicharts
+    condition: postgresql.enabled

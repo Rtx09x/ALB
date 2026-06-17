@@ -1,0 +1,150 @@
+﻿name: ðŸ› Bug Report
+description: Report a reproducible bug, crash, or unexpected behavior in agent-load-balancer.
+title: "bug: <one-line summary of what's broken>"
+labels: ["bug", "triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to file a bug report! ðŸ™
+
+        Before you continue:
+        - Search [open & closed issues](https://github.com/rtx09x/agent-load-balancer/issues?q=is%3Aissue) â€” your problem may already be known.
+        - For "how do Iâ€¦?" questions, please use [Discussions](https://github.com/rtx09x/agent-load-balancer/discussions) instead.
+        - For security vulnerabilities, use a [private advisory](https://github.com/rtx09x/agent-load-balancer/security/advisories/new) â€” **do not** post them here.
+
+  - type: checkboxes
+    id: preflight
+    attributes:
+      label: Pre-flight checklist
+      description: Confirm each item before submitting.
+      options:
+        - label: I searched existing issues and confirmed this is not a duplicate.
+          required: true
+        - label: I am running a supported agent-load-balancer version (see Releases).
+          required: true
+        - label: I can reproduce the problem with the steps below.
+          required: true
+
+  - type: input
+    id: version
+    attributes:
+      label: agent-load-balancer version
+      description: Output of `agent-load-balancer --version` or the image tag you deployed.
+      placeholder: "1.17.0"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: deployment
+    attributes:
+      label: Deployment method
+      multiple: false
+      options:
+        - uvx (agent-load-balancer)
+        - pip install agent-load-balancer
+        - Docker (ghcr.io/rtx09x/agent-load-balancer)
+        - Docker Compose
+        - Helm chart (oci://ghcr.io/rtx09x/charts/agent-load-balancer)
+        - From source
+        - Other (describe below)
+    validations:
+      required: true
+
+  - type: dropdown
+    id: client
+    attributes:
+      label: Client used against agent-load-balancer
+      multiple: true
+      description: Select every client that triggers the bug.
+      options:
+        - Codex CLI
+        - Codex app (desktop / web)
+        - ÐžpenCode
+        - Direct HTTP (curl / SDK)
+        - Other (describe below)
+    validations:
+      required: true
+
+  - type: dropdown
+    id: account_plan
+    attributes:
+      label: ChatGPT account plan(s) involved
+      multiple: true
+      description: Plan type of the upstream account(s) in the affected pool.
+      options:
+        - Free
+        - Plus
+        - Pro
+        - Team
+        - Business
+        - Enterprise
+        - Edu
+        - API-key only (no ChatGPT account)
+        - Mixed pool
+        - Not sure
+    validations:
+      required: true
+
+  - type: input
+    id: model
+    attributes:
+      label: Model(s) involved
+      description: Exact model string(s) from the request that fails.
+      placeholder: "gpt-5-codex, gpt-5.3-codex-spark"
+
+  - type: textarea
+    id: what_happened
+    attributes:
+      label: What happened?
+      description: Describe the actual behavior. Include error messages verbatim.
+      placeholder: |
+        e.g. "Streaming response from /v1/responses returns empty body for ~10s
+        then closes with status 200 but no `response.output_text.delta` events."
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: What did you expect to happen?
+    validations:
+      required: true
+
+  - type: textarea
+    id: repro
+    attributes:
+      label: Steps to reproduce
+      description: Minimal reproduction â€” config, request payload, command sequence.
+      placeholder: |
+        1. Start agent-load-balancer with `docker compose up -d` (compose snippet below).
+        2. Configure Codex CLI to point at http://localhost:<port>.
+        3. Run `codex â€¦ <prompt>`.
+        4. Observe â€¦
+      render: markdown
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant logs
+      description: |
+        Paste the **agent-load-balancer server logs** spanning the failing request. Redact API
+        keys, tokens, and any account identifiers before pasting.
+      render: shell
+
+  - type: textarea
+    id: config
+    attributes:
+      label: Configuration / environment
+      description: |
+        Anonymized excerpt of your deployment config â€” env vars, compose file, helm
+        values, or `config.yaml`. Strip secrets.
+      render: yaml
+
+  - type: textarea
+    id: extra
+    attributes:
+      label: Additional context
+      description: Screenshots of the dashboard, network captures, related issues, etc.

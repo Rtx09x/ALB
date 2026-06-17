@@ -1,0 +1,71 @@
+# Dependencies / virtualenvs
+.venv/
+venv/
+env/
+node_modules/
+frontend/node_modules/
+
+# Build / generated output
+build/
+dist/
+app/static/
+frontend/dist/
+frontend/coverage/
+frontend/.vite/
+frontend/.vitest/
+htmlcov/
+
+# Graphify output / imported raw corpus
+graphify-out/
+raw/
+
+# Local app state, DBs, secrets, logs
+.env
+.env.*
+.agent-load-balancer/
+.codex-lb/
+*.db
+*.db-*
+*.sqlite
+*.sqlite3
+store.db
+vault.enc.json
+encryption.key
+*.key
+*.pem
+*.crt
+*.p12
+*.pfx
+logs/
+*.log
+
+# Caches
+__pycache__/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.ty/
+.coverage
+.coverage.*
+
+# Local/tooling scratch
+.local/
+.worktrees/
+certs/
+.sisyphus/
+.specstory/
+.agents/hooks/state/
+.agents/log/
+.omx/
+.superpowers/
+refs/
+poc/
+
+# OS/editor noise
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo
+*~

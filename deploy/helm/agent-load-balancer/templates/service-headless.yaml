@@ -1,0 +1,17 @@
+﻿apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "agent-load-balancer.bridgeHeadlessServiceName" . }}
+  namespace: {{ .Release.Namespace | quote }}
+  labels:
+    {{- include "agent-load-balancer.labels" . | nindent 4 }}
+spec:
+  clusterIP: None
+  publishNotReadyAddresses: true
+  selector:
+    {{- include "agent-load-balancer.workloadSelectorLabels" . | nindent 4 }}
+  ports:
+    - name: http
+      port: {{ .Values.service.port }}
+      targetPort: http
+      protocol: TCP
